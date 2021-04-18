@@ -9,6 +9,7 @@ public class Diamond : MonoBehaviour
     //public float velocity = 5f;
     public static Diamond diamond;
     public Rigidbody rb;
+    public Transform child;
     public GameObject explosion;
     public GameObject soundexplosion;
     public GameObject soundClick;
@@ -20,53 +21,60 @@ public class Diamond : MonoBehaviour
     public bool isDragged;
 
     public Color[] colorDiamond; 
+    
     int totalColor;
 
     // Start is called before the first frame update
+/*
+    void Awake()
+    {
+        
+        colorDiamond[0] = new Color(1, 1, 1, 1);
+        colorDiamond[1] = new Color(1.0f, 1.0f, 0f, 1.0f);
+        colorDiamond[2] = new Color(0f, 0f, 1f, 1.0f);
+        colorDiamond[3] = new Color(0f, 1.0f, 0f, 1.0f);
+        colorDiamond[4] = new Color(1.0f, 0f, 0f, 1.0f);
+        colorDiamond[5] = new Color(0.937f, 0.490f, 0.043f, 1.0f);
+
+        
+    }*/
+
     void Start()
     {
         diamond = this;
         totalColor = colorDiamond.Length;
 
-        Transform child = this.gameObject.transform.GetChild(1);
+        child = this.gameObject.transform.GetChild(1);
         mr = child.GetComponent<MeshRenderer>();
         //Color mrColor = mr.material.color;
         mr.material.color = colorDiamond[Random.Range(0, totalColor)];
 
-        //Debug.Log(mrColor);
 
-        //rb.velocity = new Vector3 ( Random.Range(-5,5), Random.Range(-5,5), 0);
-
-        //rb.transform.rotation.x = 45;
     }
 
     void Update()
     {
         //transform.RotateAround(transform.position, Vector3.back, speed * Time.deltaTime);
         transform.Rotate(new Vector3(0f, 30f, 0f) * Time.deltaTime);
-        
-        if (Puntaje1.puntajeActual.bomb)
-        {
-            DestroyAll();
-        }
+
+
+        if (Puntaje1.puntajeActual.bomb) DestroyDiamond();
+        if (Puntaje1.puntajeActual.power2) DestroyColor(Puntaje1.puntajeActual.colorDestroyPower2);
+        if (Puntaje1.puntajeActual.power3) DestroyColor(Puntaje1.puntajeActual.colorDestroyPower3);
+        if (Puntaje1.puntajeActual.power4) DestroyColumn(Puntaje1.puntajeActual.transformDestroyPower4);
     }
 
 
-    void LastUpdate()
-    {
-        //transform.RotateAround(transform.position, Vector3.back, speed * Time.deltaTime);
-        /*
-        if (Puntaje1.puntajeActual.bomb)
-        {
-            Puntaje1.puntajeActual.bomb = false;
-        }*/
-    }
 
     void OnMouseDown()
     {
+        
+        Puntaje1.puntajeActual.ControlarColorPower4(mr.material.color, child);
         Puntaje1.puntajeActual.ControlarColorBomb(mr.material.color);
         Puntaje1.puntajeActual.ControlarColorPower2(mr.material.color);
         Puntaje1.puntajeActual.ControlarColorPower3(mr.material.color);
+
+        
         Efectos();
         Destroy(gameObject);
 
@@ -76,7 +84,7 @@ public class Diamond : MonoBehaviour
         //Handheld.Vibrate();
     }
 
-    void OnTriggerEnter(Collider collision)
+    /*void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "limits") // escena31
         {
@@ -84,7 +92,7 @@ public class Diamond : MonoBehaviour
                 Destroy(gameObject);
                 Puntaje1.puntajeActual.RestarPuntaje();
         }
-    }
+    }*/
 
     void OnCollisionEnter(Collision collision)
     {
@@ -96,6 +104,8 @@ public class Diamond : MonoBehaviour
                 Puntaje1.puntajeActual.RestarPuntaje();
         }
 
+        /*
+
         if (collision.gameObject.tag == "border" && Perder1.perder1.escenaActual() == 1) // escena1
         {
             //DestroySphere();
@@ -104,24 +114,15 @@ public class Diamond : MonoBehaviour
             //Puntaje.puntajeActual.ActualizarPuntaje ();
             //SendMessage ("perder1", SendMessageOptions.DontRequireReceiver);
  
-        }
+        }*/
+        /*
         if (collision.gameObject.name == "Up")
         {
             //DestroySphere();
-        }
+        }*/
 
     }
 
-
-    void DestroySphere()
-    {
-        /*
-        Instantiate(explosion, transform.position, Quaternion.identity);
-        Instantiate(soundexplosion);
-        Destroy(gameObject);
-        Vida.vidaPlayer.Danio();
-        */
-    }
 
 
     public void DestroyDiamond()
@@ -129,9 +130,8 @@ public class Diamond : MonoBehaviour
         Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 2f);
         Destroy(gameObject);
         Puntaje1.puntajeActual.ActualizarPuntaje ();
-            
         Puntaje1.diamondInScreen--;
-        Puntaje1.puntajeActual.bomb = false;
+        
         /*
         
         Instantiate(soundexplosion);
@@ -140,14 +140,10 @@ public class Diamond : MonoBehaviour
     }
 
 
-    public void DestroyAll()
-    {
-        DestroyDiamond();
-    }
-
 
     public void DestroyColor(Color colorDestroy)
     {
+        //Debug.Log(colorDestroy+"   "+mr.material.color);
         if (colorDestroy == mr.material.color)
         {
             DestroyDiamond();
@@ -155,6 +151,13 @@ public class Diamond : MonoBehaviour
     }
 
 
+    public void DestroyColumn(float transformDiamond4)
+    {
+        if (gameObject.transform.position.x <= (transformDiamond4 +1) && gameObject.transform.position.x >= (transformDiamond4 -1))
+        {
+            DestroyDiamond();
+        }
+    }
 
 
     public void Efectos()

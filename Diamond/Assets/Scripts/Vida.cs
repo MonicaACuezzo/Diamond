@@ -43,7 +43,7 @@ public class Vida : MonoBehaviour
 
             //Instantiate(choque, transform.position, Quaternion.identity);
             CameraShake(2f);
-            Handheld.Vibrate();
+            //Handheld.Vibrate();
 
 
             if (cantidadDeVidas>=3)

@@ -13,7 +13,7 @@ public class Puntaje1 : MonoBehaviour
     public static int frecuencia = 4;
     public static float begin = 1;
 
-    public static float velocidadAsteroide = 2;
+    //public static float velocidadAsteroide = 2;
     public static int diamondInScreen; //cuenta la cant de perlas en pantalla para nivel 8
 
 
@@ -42,7 +42,8 @@ public class Puntaje1 : MonoBehaviour
     //PODER1
     public bool bomb = false; // indica si todos los diamond in screen deben destruirse
     public Color colorBomb; // indica que color de diamante activa la bomba
-    public int cantColorBomb= 0;
+    public int cantColorBomb= 0; // cuenta los cristales del color indicado
+    public float stopBomb;
 
 
     //PODER2
@@ -50,6 +51,7 @@ public class Puntaje1 : MonoBehaviour
     public Color colorPower2; // indica que color de diamante activa la bomba
     public Color colorDestroyPower2; // indica  color a destruir
     public int cantColorPower2= 0;
+    public float stopPower2;
 
 
     //PODER3
@@ -57,10 +59,20 @@ public class Puntaje1 : MonoBehaviour
     public Color colorPower3; // indica que color de diamante activa la bomba
     public Color colorDestroyPower3; // indica  color a destruir
     public int cantColorPower3= 0;
+    public float stopPower3;
+
+
+    //PODER4
+    public bool power4 = false; // indica si todos los diamond in screen deben destruirse
+    public Color colorPower4; // indica que color de diamante activa la bomba
+    public float  transformDestroyPower4; // indica  color a destruir
+    public int cantColorPower4= 0;
+    public float stopPower4;
 
 
 
-    public Color[] lastColors; // guarda los ultimos tres colores tocados
+
+    //public Color[] lastColors; // guarda los ultimos tres colores tocados
 
 
     // Start is called before the first frame update
@@ -86,7 +98,7 @@ public class Puntaje1 : MonoBehaviour
         bomb = false; 
         cantColorBomb = 0;
 
-        lastColors = new Color[3];
+        //lastColors = new Color[3];
         
         
     }
@@ -106,9 +118,14 @@ public class Puntaje1 : MonoBehaviour
             if (frecuencia <= 1) frecuencia = 1;
         }*/
 
+        if (bomb)   if (Time.time > stopBomb)   bomb = false;
+        if (power2)   if (Time.time > stopPower2)   power2 = false;
+        if (power3)   if (Time.time > stopPower3)   power3 = false;
+        if (power4)   if (Time.time > stopPower4)   power4 = false;
+
         if ((Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0)) && panelInicio.activeInHierarchy)
         {
-            //panelInicio.SetActive(false);
+            panelInicio.SetActive(false);
             Activate();
         }
 
@@ -119,22 +136,14 @@ public class Puntaje1 : MonoBehaviour
    
     public void ActualizarPuntaje()
     {
-        //puntaje++;
-        puntaje+=5;
+        puntaje+=5;  //puntaje++;
         muestraPuntaje.text = puntaje.ToString();
-        if (puntaje % 10 == 0)
-        {
-            Vida.vidaPlayer.Sanar();
-        }
     }
 
     public void RestarPuntaje()
     {
         puntaje--;
-        if (puntaje <= 0)
-        {
-            puntaje = 0;
-        }
+        if (puntaje <= 0)   puntaje = 0;
         muestraPuntaje.text = puntaje.ToString();
     }
 
@@ -146,13 +155,14 @@ public class Puntaje1 : MonoBehaviour
             cantColorBomb++;
             if (cantColorBomb >= 3)
             {
-                //Diamond.diamond.DestroyAll();
                 bomb = true;
+                stopBomb = Time.time + 1.0f;
                 cantColorBomb = 0;
             }
         }
-
     }
+
+
 
 
    public void ControlarColorPower2(Color colorObject)
@@ -162,30 +172,45 @@ public class Puntaje1 : MonoBehaviour
             cantColorPower2++;
             if (cantColorPower2 >= 3)
             {
-                //Diamond.diamond.DestroyColor(colorPower2);
                 power2 = true;
+                stopPower2 = Time.time + 1.0f;
                 cantColorPower2 = 0;
             }
         }
-
     }
 
 
-   public void ControlarColorPower2(Color colorObject)
+   public void ControlarColorPower3(Color colorObject)
     {
-        if (colorObject == colorPower2)
+        if (colorObject == colorPower3)
         {
-            cantColorPower2++;
-            if (cantColorPower2 >= 3)
+            cantColorPower3++;
+            if (cantColorPower3 >= 3)
             {
-                //Diamond.diamond.DestroyColor(colorPower2);
-                power2 = true;
-                cantColorPower2 = 0;
+                power3 = true;
+                stopPower3 = Time.time + 1.0f;
+                cantColorPower3 = 0;
             }
         }
-
     }
 
+   public void ControlarColorPower4(Color colorObject, Transform transformObject)
+    {
+        //Debug.Log(transformObject.position);
+
+        if (colorObject == colorPower4)
+        {
+            cantColorPower4++;
+            if (cantColorPower4 >= 3)
+            {
+                transformDestroyPower4 = transformObject.position.x;
+                
+                power4 = true;
+                stopPower4 = Time.time + 1.0f;
+                cantColorPower4 = 0;
+            }
+        }
+    }
 
 
     public void VerificarPar(Color colorObject)

@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
 
         Destroy(gameObject);
         Vida.vidaPlayer.CameraShake(2f);
+        //Handheld.Vibrate();
 
         Puntaje1.puntajeActual.RestarPuntaje ();
             
