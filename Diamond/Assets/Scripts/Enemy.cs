@@ -9,12 +9,6 @@ public class Enemy : MonoBehaviour
     public GameObject explosion;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //rb.velocity = new Vector3 ( Random.Range(-5,5), Random.Range(-5,5), 0);
-    }
-
     void Update()
     {
         if (transform.position.y < -4)   Destroy(gameObject);
@@ -25,8 +19,6 @@ public class Enemy : MonoBehaviour
     void OnMouseDown()
     {
         
-        //Efectos();
-
         Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 2f);
 
         Destroy(gameObject);
@@ -35,7 +27,7 @@ public class Enemy : MonoBehaviour
 
         Puntaje1.puntajeActual.RestarPuntaje ();
             
-        Puntaje1.diamondInScreen--;
+        Puntaje1.puntajeActual.RestarPoderes ();
     }
 
  

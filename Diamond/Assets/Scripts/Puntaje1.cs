@@ -39,19 +39,23 @@ public class Puntaje1 : MonoBehaviour
     public bool secuencia;
     int x ; //indice  para controlar secuencia de colores 
 
-    //PODER1
+    //PODER1  --------   BOMBA
     public bool bomb = false; // indica si todos los diamond in screen deben destruirse
     public Color colorBomb; // indica que color de diamante activa la bomba
     public int cantColorBomb= 0; // cuenta los cristales del color indicado
-    public float stopBomb;
+    public float stopBomb;  //lapso que debe estar activo el poder
+    public int totColorBomb= 0; // cuenta los cristales del color indicado
+    public GameObject imagenBomb; // barra que indica el nivel acumulado  del poder
 
 
-    //PODER2
-    public bool power2 = false; // indica si todos los diamond in screen deben destruirse
-    public Color colorPower2; // indica que color de diamante activa la bomba
+    //PODER2     ------ rompiendo el color que da el poder ROMPE TODOS LOS DE UN COLOR INDICADO
+    public bool power2 = false; // indica si el poder esta activo
+    public Color colorPower2; // indica que color de diamante activa el poder
     public Color colorDestroyPower2; // indica  color a destruir
-    public int cantColorPower2= 0;
-    public float stopPower2;
+    public int cantColorPower2= 0; // cuenta los cristales que se van rompiendo
+    public float stopPower2; //lapso que debe estar activo el poder
+    public int totPower2= 0; // total de cristales para activar el poder
+    public GameObject imagenPower2;  // barra que indica el nivel acumulado  del poder
 
 
     //PODER3
@@ -60,14 +64,18 @@ public class Puntaje1 : MonoBehaviour
     public Color colorDestroyPower3; // indica  color a destruir
     public int cantColorPower3= 0;
     public float stopPower3;
+    public int totPower3= 0; // total de cristales para activar el poder
+    public GameObject imagenPower3;  // barra que indica el nivel acumulado  del poder
 
 
-    //PODER4
-    public bool power4 = false; // indica si todos los diamond in screen deben destruirse
-    public Color colorPower4; // indica que color de diamante activa la bomba
-    public float  transformDestroyPower4; // indica  color a destruir
-    public int cantColorPower4= 0;
-    public float stopPower4;
+    //PODER4   ----- COLOR destruye  COLUMNA
+    public bool power4 = false; // indica si el poder esta activo
+    public Color colorPower4; // indica que color de diamante activa el poder
+    public float  transformDestroyPower4; // indica  columna a destruir
+    public int cantColorPower4= 0;  // contador de cristales que activan el poder
+    public float stopPower4;  //lapso que debe estar activo el poder
+    public int totPower4= 0; // total de cristales para activar el poder
+    public GameObject imagenPower4;  // barra que indica el nivel acumulado  del poder
 
 
 
@@ -148,16 +156,18 @@ public class Puntaje1 : MonoBehaviour
     }
 
 
-    public void ControlarColorBomb(Color colorObject)
+    public void ControlarColorBomb(Color colorObject)  // poder BOMBA
     {
         if (colorObject == colorBomb)
         {
             cantColorBomb++;
-            if (cantColorBomb >= 3)
+            barraIndicadoraPoder(imagenBomb, cantColorBomb*10, colorBomb);
+            if (cantColorBomb >= totColorBomb)
             {
                 bomb = true;
                 stopBomb = Time.time + 1.0f;
                 cantColorBomb = 0;
+                barraIndicadoraPoder(imagenBomb, cantColorBomb*10, colorBomb);
             }
         }
     }
@@ -165,16 +175,18 @@ public class Puntaje1 : MonoBehaviour
 
 
 
-   public void ControlarColorPower2(Color colorObject)
+   public void ControlarColorPower2(Color colorObject)  // poder COLOR mata a COLOR
     {
         if (colorObject == colorPower2)
         {
             cantColorPower2++;
-            if (cantColorPower2 >= 3)
+            barraIndicadoraPoder(imagenPower2, cantColorPower2*10, colorPower2);
+            if (cantColorPower2 >= totPower2)
             {
                 power2 = true;
                 stopPower2 = Time.time + 1.0f;
                 cantColorPower2 = 0;
+                barraIndicadoraPoder(imagenPower2, cantColorPower2*10, colorPower2);
             }
         }
     }
@@ -185,32 +197,68 @@ public class Puntaje1 : MonoBehaviour
         if (colorObject == colorPower3)
         {
             cantColorPower3++;
-            if (cantColorPower3 >= 3)
+            barraIndicadoraPoder(imagenPower3, cantColorPower3*10, colorPower3);
+            if (cantColorPower3 >= totPower3)
             {
                 power3 = true;
                 stopPower3 = Time.time + 1.0f;
                 cantColorPower3 = 0;
+                barraIndicadoraPoder(imagenPower3, cantColorPower3*10, colorPower3);
             }
         }
     }
 
-   public void ControlarColorPower4(Color colorObject, Transform transformObject)
+   public void ControlarColorPower4(Color colorObject, Transform transformObject)   // poder COLUMNA
     {
         //Debug.Log(transformObject.position);
 
         if (colorObject == colorPower4)
         {
             cantColorPower4++;
-            if (cantColorPower4 >= 3)
+            barraIndicadoraPoder(imagenPower4, cantColorPower4*10, colorPower4);
+            
+            if (cantColorPower4 >= totPower4)
             {
                 transformDestroyPower4 = transformObject.position.x;
                 
                 power4 = true;
                 stopPower4 = Time.time + 1.0f;
                 cantColorPower4 = 0;
+                barraIndicadoraPoder(imagenPower4, cantColorPower4*10, colorPower4);
             }
         }
     }
+
+
+   public void RestarPoderes()   // perder los  PODERES por matar un enemigo
+    {
+        cantColorBomb = cantColorPower2 = cantColorPower3 = cantColorPower4 = 0;
+
+        barraIndicadoraPoder(imagenBomb, 0, colorBomb);
+        barraIndicadoraPoder(imagenPower2, 0, colorPower2);
+        barraIndicadoraPoder(imagenPower3, 0, colorPower3);
+        barraIndicadoraPoder(imagenPower4, 0, colorPower4);
+    }
+
+
+    public void barraIndicadoraPoder(GameObject imagen, int valorPoder, Color colorBarra)
+    {
+
+        float valor =  (valorPoder/100f);
+        float texto = valor *100f;
+        if (texto <= 0)  
+        {
+            texto = 0;
+        
+            imagen.transform.localScale = new Vector3(.5f,0.5f,0);
+            imagen.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.39f);
+        }else{
+            imagen.transform.localScale = new Vector3(valor,0.5f,0);
+            imagen.GetComponent<Image>().color = colorBarra;
+        }
+    }
+
+
 
 
     public void VerificarPar(Color colorObject)

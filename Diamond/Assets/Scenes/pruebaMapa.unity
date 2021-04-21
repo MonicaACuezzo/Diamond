@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: -6478536213147159724, guid: 955244c26bb4c3a41ae931319aa56c1a, type: 3}
     - target: {fileID: 2971542036940430761, guid: 888a047aaad46ad4ba06dbcf137fe724, type: 3}
       propertyPath: m_Name
-      value: lineOUT
+      value: line7
       objectReference: {fileID: 0}
     - target: {fileID: 3280927520727180574, guid: 888a047aaad46ad4ba06dbcf137fe724, type: 3}
       propertyPath: m_Materials.Array.size
@@ -798,6 +798,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   escena: pruebaRelaxPastel
+--- !u!1 &1664639024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2971542036940430761, guid: 888a047aaad46ad4ba06dbcf137fe724, type: 3}
+  m_PrefabInstance: {fileID: 394293504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1664639028
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664639024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 686cd0df801987d4ea5dee2948e21330, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1722780009
 GameObject:
   m_ObjectHideFlags: 0

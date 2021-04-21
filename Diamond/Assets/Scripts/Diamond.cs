@@ -11,8 +11,8 @@ public class Diamond : MonoBehaviour
     public Rigidbody rb;
     public Transform child;
     public GameObject[] explosion;
-    public GameObject soundexplosion;
-    public GameObject soundClick;
+    //public GameObject soundexplosion;
+    //public GameObject soundClick;
     public int speed = 10, indice;
     MeshRenderer mr;
     
@@ -176,14 +176,5 @@ public class Diamond : MonoBehaviour
         */
     }
 
-
-    public void barraIndicadoraPoder(GameObject imagen, float valorPoder)
-    {
-
-        float valor =  (valorPoder/100f);
-        float texto = valor *100f;
-        if (texto < 0) {texto = 0;}
-        imagen.transform.localScale = new Vector3(valor,1,0);
-    }
 
 }

@@ -67,7 +67,8 @@ public class DiamondBlancoRelax : MonoBehaviour
 
         if (diamanteGrande)
         {
-
+            //Handheld.Vibrate();
+            
             Instantiate (smallDiamond, transform.position + Random.onUnitSphere * 1f, Quaternion.identity);
             Instantiate (smallDiamond, transform.position + Random.onUnitSphere * .7f, Quaternion.identity);
             Instantiate (smallDiamond, transform.position + Random.onUnitSphere * 1f, Quaternion.identity);
