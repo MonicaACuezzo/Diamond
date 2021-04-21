@@ -8,13 +8,13 @@ public class Botones : MonoBehaviour
     
     public void Next()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("prueba002");
     }
 
     
     public void Prev()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("prueba001");
     }
 
     public void Exit()

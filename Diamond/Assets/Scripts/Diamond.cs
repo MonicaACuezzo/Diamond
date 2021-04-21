@@ -10,10 +10,10 @@ public class Diamond : MonoBehaviour
     public static Diamond diamond;
     public Rigidbody rb;
     public Transform child;
-    public GameObject explosion;
+    public GameObject[] explosion;
     public GameObject soundexplosion;
     public GameObject soundClick;
-    public int speed = 10;
+    public int speed = 10, indice;
     MeshRenderer mr;
     
 
@@ -23,6 +23,8 @@ public class Diamond : MonoBehaviour
     public Color[] colorDiamond; 
     
     int totalColor;
+    public float rotationX, x;
+
 
     // Start is called before the first frame update
 /*
@@ -47,16 +49,21 @@ public class Diamond : MonoBehaviour
         child = this.gameObject.transform.GetChild(1);
         mr = child.GetComponent<MeshRenderer>();
         //Color mrColor = mr.material.color;
-        mr.material.color = colorDiamond[Random.Range(0, totalColor)];
 
+        indice = Random.Range(0, totalColor);
+        mr.material.color = colorDiamond[indice];
+
+        x = Random.Range(-rotationX, rotationX);
 
     }
 
     void Update()
     {
         //transform.RotateAround(transform.position, Vector3.back, speed * Time.deltaTime);
-        transform.Rotate(new Vector3(0f, 30f, 0f) * Time.deltaTime);
+        //transform.Rotate(new Vector3(60f, 30f, 0f) * Time.deltaTime);
+        transform.Rotate(new Vector3(x, x, 0f) * Time.deltaTime);
 
+        if (transform.position.y < -5)   Destroy(gameObject);
 
         if (Puntaje1.puntajeActual.bomb) DestroyDiamond();
         if (Puntaje1.puntajeActual.power2) DestroyColor(Puntaje1.puntajeActual.colorDestroyPower2);
@@ -94,6 +101,7 @@ public class Diamond : MonoBehaviour
         }
     }*/
 
+/*
     void OnCollisionEnter(Collision collision)
     {
 
@@ -119,15 +127,15 @@ public class Diamond : MonoBehaviour
         if (collision.gameObject.name == "Up")
         {
             //DestroySphere();
-        }*/
+        }
 
     }
-
+*/
 
 
     public void DestroyDiamond()
     {
-        Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 2f);
+        Destroy(Instantiate(explosion[indice], transform.position, Quaternion.identity), 2f);
         Destroy(gameObject);
         Puntaje1.puntajeActual.ActualizarPuntaje ();
         Puntaje1.diamondInScreen--;
@@ -162,10 +170,20 @@ public class Diamond : MonoBehaviour
 
     public void Efectos()
     {
-        Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 2f);
+        Destroy(Instantiate(explosion[indice], transform.position, Quaternion.identity), 2f);
         /*
         Instantiate(soundClick);
         */
+    }
+
+
+    public void barraIndicadoraPoder(GameObject imagen, float valorPoder)
+    {
+
+        float valor =  (valorPoder/100f);
+        float texto = valor *100f;
+        if (texto < 0) {texto = 0;}
+        imagen.transform.localScale = new Vector3(valor,1,0);
     }
 
 }

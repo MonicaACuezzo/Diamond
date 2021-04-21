@@ -6,7 +6,7 @@ public class InstantiatorDiamond : MonoBehaviour
 {
     public static InstantiatorDiamond instantiatorDiamond;
 
-    public float InstantiateRate = 3f; // lo reemplazo por "frecuencia"
+    //public float InstantiateRate = 3f; // lo reemplazo por "frecuencia"
 
     public float begin; // para demora inicial
     public float end; // es la frecuencia de emision
@@ -31,7 +31,9 @@ public class InstantiatorDiamond : MonoBehaviour
 
                 //Instantiate (diamondPrefab[Random.Range(0,total)], transform.position, Quaternion.identity);
                 //Instantiate (diamondPrefab[Random.Range(0,total)], new Vector2(transform.position.x+ Random.Range(-rangoX,rangoX), transform.position.y+ Random.Range(-rangoY,rangoY)), Quaternion.identity);
+                
                 Instantiate (diamondPrefab[Random.Range(0,total)], new Vector2(transform.position.x+ Random.Range(-rangoX,rangoX), transform.position.y), Quaternion.identity);
+            //Instantiate (diamondPrefab[Random.Range(0,total)], transform.position + Random.onUnitSphere * .3f, Quaternion.identity);
                 Puntaje1.diamondInScreen++;
                 if (Puntaje1.diamondInScreen >= 80) Puntaje1.puntajeActual.VerificarFinal();
                 

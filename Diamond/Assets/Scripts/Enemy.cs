@@ -15,6 +15,12 @@ public class Enemy : MonoBehaviour
         //rb.velocity = new Vector3 ( Random.Range(-5,5), Random.Range(-5,5), 0);
     }
 
+    void Update()
+    {
+        if (transform.position.y < -4)   Destroy(gameObject);
+    }
+
+
 
     void OnMouseDown()
     {
@@ -32,12 +38,5 @@ public class Enemy : MonoBehaviour
         Puntaje1.diamondInScreen--;
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "limits") // escena31
-        {
-            Destroy(gameObject);
-        }
-    }
-
+ 
 }

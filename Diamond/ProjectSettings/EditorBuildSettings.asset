@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/pruebaMapa.unity
+    guid: 7469c40679593c04684db66a4362e964
+  - enabled: 0
+    path: Assets/Scenes/pruebaMenu.unity
+    guid: d6a175dc3eb0e044ea2db043ae62b23f
+  - enabled: 1
+    path: Assets/Scenes/pruebaRelax.unity
+    guid: d1271db3bac93ef44a23f9af8ee4e9ba
+  - enabled: 1
     path: Assets/Scenes/prueba001.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/prueba002.unity
     guid: f01cf1df7562f2c42a5c025000f252c6
   m_configObjects: {}

@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25280369}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -240, y: -388.6, z: 0}
+  m_LocalPosition: {x: -240, y: -390, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1491035239}
@@ -166,77 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d76c09bca55a64cba1b6fd54be0b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstantiateRate: 3
-  begin: 0.3
+  begin: 0.5
   end: 1
   rangoX: 2
   rangoY: 1
   diamondPrefab:
   - {fileID: 1258705264959429820, guid: 5a0795c2486e826448d815f4cc508a0c, type: 3}
---- !u!1 &26435608
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 26435610}
-  - component: {fileID: 26435609}
-  m_Layer: 0
-  m_Name: Video Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!328 &26435609
-VideoPlayer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26435608}
-  m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: c4136ca2d9b57e04382046c543d314e2, type: 3}
-  m_TargetCameraAlpha: 1
-  m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 0}
-  m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
-  m_TargetMaterialProperty: _MainTex
-  m_RenderMode: 2
-  m_AspectRatio: 2
-  m_DataSource: 0
-  m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
-  m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
-  m_Looping: 0
-  m_WaitForFirstFrame: 1
-  m_FrameReadyEventEnabled: 0
-  m_VideoShaders: []
---- !u!4 &26435610
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26435608}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150.32733, y: 346.3125, z: 515.0268}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &166521867
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240960252}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -240, y: -388.6, z: 0}
+  m_LocalPosition: {x: -240, y: -390, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1491035239}
@@ -455,8 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d76c09bca55a64cba1b6fd54be0b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstantiateRate: 3
-  begin: 0.6
+  begin: 0.8
   end: 1
   rangoX: 2
   rangoY: 1
@@ -651,7 +585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 3.5352, y: 0.1839}
+  m_AnchoredPosition: {x: 3.5352173, y: 0.1839}
   m_SizeDelta: {x: -48.2659, y: 374.6313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638867751
@@ -687,30 +621,30 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Indicaciones:
+  m_Text: 'CRISTALES MULTICOLORES - con diferentes explosiones
 
 
-    * Cada diamante que se rompe suma 5 puntos
+    * Cada diamante
+    que se rompe suma 5 puntos
+
+
+    * Cada diamante que llega al piso resta 1 punto
 
 
     *
-    Cada diamante que llega al piso resta 1 punto
+    Poder1: romper 3 diamantes blancos seguidos = efecto bomba
 
 
-    * Poder1: romper 3 diamantes
-    blancos seguidos = efecto bomba
+    *Poder2 :romper
+    3 diamantes amarillos seguidos rompe todos los azules en pantalla
 
 
-    *Poder2 :romper 3 diamantes amarillos seguidos
-    rompe todos los azules en pantalla
+    * Poder3:
+    romper 3 diamantes verdes rompen todos los diamantes rojos en pantalla
 
 
-    * Poder3: romper 3 diamantes verdes
-    rompen todos los diamantes rojos en pantalla
-
-
-    *Poder4: romper 3 diamantes
-    celestes seguidos rompe todos los diamantes en su columna
+    *Poder4:
+    romper 3 diamantes celestes seguidos rompe todos los diamantes en su columna
 
 '
 --- !u!222 &638867752
@@ -843,7 +777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d76c09bca55a64cba1b6fd54be0b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstantiateRate: 3
   begin: 0.5
   end: 1
   rangoX: 2
@@ -859,7 +792,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904603142}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -239.5, y: -384.6, z: 0}
+  m_LocalPosition: {x: -239.5, y: -390, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1491035239}
@@ -1080,8 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d76c09bca55a64cba1b6fd54be0b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstantiateRate: 3
-  begin: 0
+  begin: 0.2
   end: 1
   rangoX: 2
   rangoY: 1
@@ -1095,7 +1027,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977833601}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -240, y: -388.6, z: 0}
+  m_LocalPosition: {x: -240, y: -390, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1491035239}
@@ -1196,7 +1128,7 @@ RectTransform:
   - {fileID: 1017535629}
   - {fileID: 1705935423}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1212,7 +1144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 984659616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef269d8772ae1242bd4213919452541, type: 3}
+  m_Script: {fileID: 11500000, guid: e53d9d7332384f740a944ffe077c97fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &992428871
@@ -1345,7 +1277,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 148.5208}
+  m_SizeDelta: {x: 0, y: 213.54}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1017535630
 MonoBehaviour:
@@ -1360,14 +1292,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.030562414, g: 0.9528302, b: 0.9528302, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1385,102 +1317,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017535628}
   m_CullTransparentMesh: 1
---- !u!1 &1032273811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1032273815}
-  - component: {fileID: 1032273814}
-  - component: {fileID: 1032273813}
-  - component: {fileID: 1032273812}
-  m_Layer: 0
-  m_Name: Plane
-  m_TagString: limits
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!64 &1032273812
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032273811}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1032273813
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032273811}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c94468e35ec9d8e48a360c3693cab0bb, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1032273814
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032273811}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1032273815
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032273811}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.5361, z: 1.291}
-  m_LocalScale: {x: 1, y: 3, z: 2.43}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1105951175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,7 +1387,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NEXT
+  m_Text: EXIT
 --- !u!222 &1105951178
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1703,7 +1539,7 @@ Transform:
   - {fileID: 240960253}
   - {fileID: 904603144}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1705935422
 GameObject:
@@ -1980,8 +1816,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 984659621}
-        m_TargetAssemblyTypeName: Botones, Assembly-CSharp
-        m_MethodName: Next
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2060,7 +1896,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2154,7 +1990,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1838901357
 GameObject:
